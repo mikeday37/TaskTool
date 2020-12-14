@@ -59,7 +59,7 @@ namespace TaskTool
         {
             try
             {
-                var configStr = Phase.Run("Serialize config", () => JsonConvert.SerializeObject(config, Formatting.Indented));
+                var configStr = Phase.Run("Serialize config", () => JsonConvert.SerializeObject(config));
                 config = Phase.Run("Clone config for run", () => JsonConvert.DeserializeObject<TConfig>(configStr));
 
                 var l = controller.Logger;

@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace TaskTool
 {
-	[Flags]
-	public enum Formatting
-	{
-		Indented = 31337 // heh
-	}
-
 	public static class JsonConvert
 	{
-		internal static string SerializeObject<T>(T config, Formatting formatting)
+		internal static string SerializeObject<T>(T config)
 			where T : new()
 		{
 			throw new NotImplementedException();
