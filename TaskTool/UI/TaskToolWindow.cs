@@ -46,7 +46,7 @@ namespace TaskTool.UI
             {
                 selectedConfigPath = openFileDialog1.FileName;
                 var cfg = File.ReadAllText(selectedConfigPath);
-                var configObj = JsonConvert.DeserializeObject(cfg, ConfigType);
+                var configObj = JsonUtility.DeserializeObject(cfg, ConfigType);
                 pgConfigObject.SelectedObject = configObj;
             }
         }
@@ -56,7 +56,7 @@ namespace TaskTool.UI
             if (selectedConfigPath == null)
                 saveAsToolStripMenuItem_Click(sender, e);
             else
-                File.WriteAllText(selectedConfigPath, JsonConvert.SerializeObject(pgConfigObject.SelectedObject));
+                File.WriteAllText(selectedConfigPath, JsonUtility.SerializeObject(pgConfigObject.SelectedObject));
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace TaskTool.UI
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 selectedConfigPath = saveFileDialog1.FileName;
-                File.WriteAllText(selectedConfigPath, JsonConvert.SerializeObject(pgConfigObject.SelectedObject));
+                File.WriteAllText(selectedConfigPath, JsonUtility.SerializeObject(pgConfigObject.SelectedObject));
             }
         }
 

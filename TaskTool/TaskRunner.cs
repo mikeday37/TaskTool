@@ -59,8 +59,8 @@ namespace TaskTool
         {
             try
             {
-                var configStr = Phase.Run("Serialize config", () => JsonConvert.SerializeObject(config));
-                config = Phase.Run("Clone config for run", () => JsonConvert.DeserializeObject<TConfig>(configStr));
+                var configStr = Phase.Run("Serialize config", () => JsonUtility.SerializeObject(config));
+                config = Phase.Run("Clone config for run", () => JsonUtility.DeserializeObject<TConfig>(configStr));
 
                 var l = controller.Logger;
 
@@ -98,7 +98,7 @@ namespace TaskTool
                 return new TConfig();
 
             var configText = File.ReadAllText(configFullPath);
-            return JsonConvert.DeserializeObject<TConfig>(configText);
+            return JsonUtility.DeserializeObject<TConfig>(configText);
         }
 
         private class ControllerImpl : ITaskController
